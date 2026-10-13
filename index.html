@@ -3,20 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="M S Thanu Shree - ECE Student | Portfolio showcasing projects in web development, VLSI, and embedded systems.">
+    <meta name="author" content="M S Thanu Shree">
+    <meta name="theme-color" content="#0a0a0f" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f4f6f9" media="(prefers-color-scheme: light)">
+    <meta property="og:title" content="M S Thanu Shree - Portfolio">
+    <meta property="og:description" content="ECE Student at Dr AIT | Web Developer & Technology Enthusiast">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
     <title>M S Thanu Shree - Portfolio</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <!-- Skip to Content for Accessibility -->
+    <a href="#hero" class="skip-link">Skip to content</a>
+
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-logo">MT<span>.</span></div>
+            <div class="preloader-bar"><div class="preloader-progress"></div></div>
+            <div class="preloader-text">Loading Experience...</div>
+        </div>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress"></div>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+    <div class="cursor-dot"></div>
+
+    <!-- Particle Background -->
+    <canvas id="particle-canvas" class="particle-canvas"></canvas>
+
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#hero" class="logo">MT<span>.</span></a>
-            <ul class="nav-links">
+            <ul class="nav-links" id="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
@@ -24,15 +55,20 @@
                 <li><a href="#education">Education</a></li>
                 <li><a href="#contact" class="nav-btn">Contact</a></li>
             </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
+                    <span class="theme-icon">🌙</span>
+                </button>
+                <div class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" role="button" tabindex="0">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
             </div>
         </div>
     </nav>
 
-    <main>
+    <main id="main">
         <!-- Hero Section -->
         <section id="hero" class="hero">
             <div class="hero-container section-container">
@@ -44,8 +80,9 @@
                         I'm an ECE student interested in VLSI and embedded systems. I enjoy learning new technologies and building projects that solve real-world problems. Currently working on improving my skills in web development and emerging tech.
                     </p>
                     <div class="hero-buttons">
-                        <a href="#projects" class="btn btn-primary">View Projects</a>
-                        <a href="#contact" class="btn btn-outline">Contact Me</a>
+                        <a href="#projects" class="btn btn-primary"><i class="fas fa-layer-group"></i> View Projects</a>
+                        <a href="#contact" class="btn btn-outline"><i class="fas fa-paper-plane"></i> Contact Me</a>
+                        <button class="btn btn-ghost" id="resume-btn" aria-label="View Resume"><i class="far fa-file-alt"></i> View Resume</button>
                     </div>
                 </div>
                 <div class="hero-visual animate-on-scroll slide-up" style="transition-delay: 0.2s;">
@@ -78,35 +115,39 @@
                         </p>
                         <div class="quick-info">
                             <div class="info-card">
-                                <span class="info-label">Location</span>
+                                <span class="info-label"><i class="fas fa-map-marker-alt"></i> Location</span>
                                 <span class="info-value">Bengaluru, India</span>
                             </div>
                             <div class="info-card">
-                                <span class="info-label">College</span>
+                                <span class="info-label"><i class="fas fa-university"></i> College</span>
                                 <span class="info-value">Dr Ambedkar Institute of Technology</span>
                             </div>
                             <div class="info-card">
-                                <span class="info-label">Degree</span>
+                                <span class="info-label"><i class="fas fa-graduation-cap"></i> Degree</span>
                                 <span class="info-value">B.E in ECE</span>
                             </div>
                             <div class="info-card">
-                                <span class="info-label">Status</span>
-                                <span class="info-value">3rd Year (Expected 2028)</span>
+                                <span class="info-label"><i class="fas fa-calendar-alt"></i> Academic Status</span>
+                                <span class="info-value"><span data-count="3">3</span>rd Year (Exp. 2028)</span>
                             </div>
                             <div class="info-card">
-                                <span class="info-label">CGPA</span>
-                                <span class="info-value">7.0</span>
+                                <span class="info-label"><i class="fas fa-chart-line"></i> CGPA</span>
+                                <span class="info-value"><span data-count="7.0" data-decimals="1">7.0</span> / 10</span>
+                            </div>
+                            <div class="info-card">
+                                <span class="info-label"><i class="fas fa-laptop-code"></i> Projects</span>
+                                <span class="info-value"><span data-count="3" data-suffix="+">3+</span> Active</span>
                             </div>
                         </div>
                         <div class="hobbies">
-                            <h3>Interests</h3>
+                            <h3>Focus Areas & Interests</h3>
                             <div class="tags">
-                                <span class="tag">Web Development</span>
-                                <span class="tag">Ideathons & Hackathons</span>
-                                <span class="tag">Generative AI</span>
-                                <span class="tag">Digital Twins</span>
-                                <span class="tag">Inclusive Technology</span>
-                                <span class="tag">Practical Engineering</span>
+                                <span class="tag"><i class="fas fa-globe"></i> Web Development</span>
+                                <span class="tag"><i class="fas fa-trophy"></i> Ideathons & Hackathons</span>
+                                <span class="tag"><i class="fas fa-robot"></i> Generative AI</span>
+                                <span class="tag"><i class="fas fa-cube"></i> Digital Twins</span>
+                                <span class="tag"><i class="fas fa-universal-access"></i> Inclusive Technology</span>
+                                <span class="tag"><i class="fas fa-microchip"></i> Practical Engineering</span>
                             </div>
                         </div>
                     </div>
@@ -121,41 +162,41 @@
                 <div class="skills-grid">
                     
                     <div class="skill-category animate-on-scroll slide-up">
-                        <h3>👨‍💻 Programming Languages</h3>
+                        <h3><i class="fas fa-code"></i> Programming Languages</h3>
                         <div class="skill-cards">
-                            <div class="skill-card">JavaScript</div>
-                            <div class="skill-card">Python</div>
+                            <div class="skill-card"><i class="fab fa-js"></i> JavaScript</div>
+                            <div class="skill-card"><i class="fab fa-python"></i> Python</div>
                         </div>
                     </div>
 
                     <div class="skill-category animate-on-scroll slide-up" style="transition-delay: 0.1s;">
-                        <h3>🌐 Web Technologies</h3>
+                        <h3><i class="fas fa-layer-group"></i> Web Technologies</h3>
                         <div class="skill-cards">
-                            <div class="skill-card">HTML5</div>
-                            <div class="skill-card">CSS3</div>
-                            <div class="skill-card">JavaScript</div>
+                            <div class="skill-card"><i class="fab fa-html5"></i> HTML5</div>
+                            <div class="skill-card"><i class="fab fa-css3-alt"></i> CSS3</div>
+                            <div class="skill-card"><i class="fab fa-js"></i> JavaScript</div>
                         </div>
                     </div>
 
                     <div class="skill-category animate-on-scroll slide-up" style="transition-delay: 0.2s;">
-                        <h3>🛠️ Tools & Platforms</h3>
+                        <h3><i class="fas fa-tools"></i> Tools & Platforms</h3>
                         <div class="skill-cards">
-                            <div class="skill-card">VS Code</div>
-                            <div class="skill-card">Git</div>
-                            <div class="skill-card">GitHub</div>
-                            <div class="skill-card">Live Server</div>
-                            <div class="skill-card">Generative AI Tools</div>
+                            <div class="skill-card"><i class="fas fa-terminal"></i> VS Code</div>
+                            <div class="skill-card"><i class="fab fa-git-alt"></i> Git</div>
+                            <div class="skill-card"><i class="fab fa-github"></i> GitHub</div>
+                            <div class="skill-card"><i class="fas fa-bolt"></i> Live Server</div>
+                            <div class="skill-card"><i class="fas fa-brain"></i> Generative AI Tools</div>
                         </div>
                     </div>
 
                     <div class="skill-category animate-on-scroll slide-up" style="transition-delay: 0.3s;">
-                        <h3>🤝 Soft Skills</h3>
+                        <h3><i class="fas fa-users-cog"></i> Soft Skills</h3>
                         <div class="skill-cards">
-                            <div class="skill-card">Teamwork</div>
-                            <div class="skill-card">Problem-Solving</div>
-                            <div class="skill-card">Creative Thinking</div>
-                            <div class="skill-card">Project Planning</div>
-                            <div class="skill-card">Communication</div>
+                            <div class="skill-card"><i class="fas fa-users"></i> Teamwork</div>
+                            <div class="skill-card"><i class="fas fa-lightbulb"></i> Problem-Solving</div>
+                            <div class="skill-card"><i class="fas fa-palette"></i> Creative Thinking</div>
+                            <div class="skill-card"><i class="fas fa-tasks"></i> Project Planning</div>
+                            <div class="skill-card"><i class="fas fa-comments"></i> Communication</div>
                         </div>
                     </div>
 
@@ -167,75 +208,89 @@
         <section id="projects" class="projects">
             <div class="section-container">
                 <h2 class="section-title animate-on-scroll slide-up">Projects</h2>
+                
+                <!-- Project Filter Tabs -->
+                <div class="project-filters animate-on-scroll slide-up">
+                    <button class="filter-btn active" data-filter="all">All Projects <span class="filter-count">3</span></button>
+                    <button class="filter-btn" data-filter="web">Web Development <span class="filter-count">1</span></button>
+                    <button class="filter-btn" data-filter="hardware">Hardware & ECE <span class="filter-count">1</span></button>
+                    <button class="filter-btn" data-filter="ai">AI & Digital Twin <span class="filter-count">1</span></button>
+                </div>
+
                 <div class="projects-grid">
                     
                     <!-- Project 1 -->
-                    <div class="project-card animate-on-scroll slide-up">
+                    <div class="project-card animate-on-scroll slide-up" data-category="web" data-project="schemewise" tabindex="0" role="button" aria-label="Explore SchemeWise project details">
                         <div class="project-badge">🏆 Selected for Ideathon — Sept 2026</div>
                         <h3 class="project-title">SchemeWise</h3>
-                        <p class="project-subtitle">Voice-Driven Scheme Matcher</p>
+                        <p class="project-subtitle">Voice-Driven Welfare Scheme Matcher</p>
                         <p class="project-desc">
-                            A web application to help domestic workers, street vendors, and micro-entrepreneurs discover relevant government welfare schemes through voice input and simple audio explanations.
+                            A web application empowering domestic workers, street vendors, and micro-entrepreneurs to discover eligible government welfare schemes through voice input and simplified multilingual audio guidance.
                         </p>
                         <div class="project-contribution">
-                            <strong>My Contribution:</strong> Developed frontend, explored JSON-based scheme-matching logic, investigated voice input and occupation/state matching.
+                            <strong>My Contribution:</strong> Built responsive frontend UI, researched JSON-based welfare eligibility rules, and explored browser voice recognition integration.
                         </div>
                         <div class="project-tech">
-                            <span class="tech-tag">HTML</span>
-                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
                             <span class="tech-tag">JavaScript</span>
                             <span class="tech-tag">JSON</span>
+                            <span class="tech-tag">Web Speech API</span>
                         </div>
                         <div class="project-footer">
-                            <span class="status-indicator">In Progress</span>
+                            <span class="status-indicator in-progress">In Progress</span>
                             <div class="project-links">
-                                <button class="btn-icon disabled" title="Link not available yet" disabled>🔗 Live</button>
-                                <button class="btn-icon disabled" title="Code not available yet" disabled>💻 Code</button>
+                                <button class="btn-card-detail" data-project="schemewise" aria-label="View details for SchemeWise"><i class="fas fa-info-circle"></i> View Details</button>
                             </div>
                         </div>
                     </div>
 
                     <!-- Project 2 -->
-                    <div class="project-card animate-on-scroll slide-up" style="transition-delay: 0.1s;">
+                    <div class="project-card animate-on-scroll slide-up" data-category="hardware" data-project="oilguard" tabindex="0" role="button" aria-label="Explore OilGuard project details" style="transition-delay: 0.1s;">
+                        <div class="project-badge research-badge">🔬 Engineering Mini-Project</div>
                         <h3 class="project-title">OilGuard</h3>
-                        <p class="project-subtitle">Engineering Mini-Project</p>
+                        <p class="project-subtitle">Transformer Oil Monitoring & Protection</p>
                         <p class="project-desc">
-                            An engineering mini-project focused on identifying the research gap and preparing the synopsis, introduction, and problem statement.
+                            An engineering mini-project focused on identifying research gaps in transformer oil quality degradation, preparing the formal synopsis, technical methodology, and sensor-based monitoring roadmap.
                         </p>
                         <div class="project-contribution">
-                            <strong>My Contribution:</strong> Explored project feasibility, worked on synopsis preparation, investigated research gap and implementation roadmap.
+                            <strong>My Contribution:</strong> Explored project feasibility, conducted literature surveys, authored the problem statement, and outlined sensor integration requirements.
                         </div>
                         <div class="project-tech">
-                            <span class="tech-tag">Research</span>
+                            <span class="tech-tag">ECE Research</span>
+                            <span class="tech-tag">Sensors</span>
                             <span class="tech-tag">Documentation</span>
+                            <span class="tech-tag">System Design</span>
                         </div>
                         <div class="project-footer">
-                            <span class="status-indicator">In Progress</span>
+                            <span class="status-indicator in-progress">In Progress</span>
                             <div class="project-links">
-                                <button class="btn-icon disabled" title="Link not available yet" disabled>🔗 Live</button>
+                                <button class="btn-card-detail" data-project="oilguard" aria-label="View details for OilGuard"><i class="fas fa-info-circle"></i> View Details</button>
                             </div>
                         </div>
                     </div>
 
                     <!-- Project 3 -->
-                    <div class="project-card animate-on-scroll slide-up" style="transition-delay: 0.2s;">
+                    <div class="project-card animate-on-scroll slide-up" data-category="ai" data-project="digitaltwin" tabindex="0" role="button" aria-label="Explore Green-Building Digital Twin details" style="transition-delay: 0.2s;">
+                        <div class="project-badge concept-badge">💡 Concept Phase</div>
                         <h3 class="project-title">Green-Building Digital Twin</h3>
-                        <p class="project-subtitle">Concept Phase</p>
+                        <p class="project-subtitle">AI & Vision-Driven Building Telemetry</p>
                         <p class="project-desc">
-                            A concept exploring how generative AI and digital-twin technology could create live digital representations of physical spaces for carbon/green-building monitoring.
+                            A smart space monitoring concept exploring how Generative AI and digital twin paradigms can represent real-time physical room metrics, occupancy, and carbon footprint telemetry via smartphone camera feeds.
                         </p>
                         <div class="project-contribution">
-                            <strong>My Contribution:</strong> Explored digital twin creation, live data collection/display, smartphone camera integration via IP Webcam, and generative AI applications.
+                            <strong>My Contribution:</strong> Explored digital twin architecture, smartphone camera integration via IP Webcam, and generative AI models for spatial analysis.
                         </div>
                         <div class="project-tech">
                             <span class="tech-tag">Generative AI</span>
                             <span class="tech-tag">Digital Twin</span>
                             <span class="tech-tag">IP Webcam</span>
+                            <span class="tech-tag">IoT Concept</span>
                         </div>
                         <div class="project-footer">
-                            <span class="status-indicator">Concept Phase</span>
+                            <span class="status-indicator concept">Concept Phase</span>
                             <div class="project-links">
-                                <button class="btn-icon disabled" title="Link not available yet" disabled>🔗 Live</button>
+                                <button class="btn-card-detail" data-project="digitaltwin" aria-label="View details for Digital Twin"><i class="fas fa-info-circle"></i> View Details</button>
                             </div>
                         </div>
                     </div>
@@ -256,17 +311,21 @@
                             <div class="timeline-item">
                                 <div class="timeline-dot"></div>
                                 <div class="timeline-content glass-card">
-                                    <h4>SchemeWise Ideathon Selection</h4>
-                                    <span class="date">September 2026</span>
-                                    <p>Team selected for the SchemeWise idea, focusing on inclusive technology for marginalized workers.</p>
+                                    <div class="timeline-header">
+                                        <h4>SchemeWise Ideathon Selection</h4>
+                                        <span class="date">September 2026</span>
+                                    </div>
+                                    <p>Selected among competitive student teams for the SchemeWise project presentation, focusing on inclusive digital governance tools for unorganized sector workers.</p>
                                 </div>
                             </div>
                             <div class="timeline-item">
                                 <div class="timeline-dot"></div>
                                 <div class="timeline-content glass-card">
-                                    <h4>Professional Summary</h4>
-                                    <span class="date">Ongoing</span>
-                                    <p>Actively engaged in student project development, ideathon participation, and comprehensive engineering mini-project planning.</p>
+                                    <div class="timeline-header">
+                                        <h4>Engineering Project Milestones</h4>
+                                        <span class="date">Ongoing</span>
+                                    </div>
+                                    <p>Actively engaged in departmental technical presentations, collaborative ideathon workshops, and hardware-software integration initiatives at Dr AIT.</p>
                                 </div>
                             </div>
                         </div>
@@ -278,11 +337,21 @@
                         <div class="education-card glass-card">
                             <div class="edu-icon">🎓</div>
                             <h3>Dr Ambedkar Institute of Technology</h3>
-                            <p class="degree">B.E in Electronics and Communication</p>
+                            <p class="degree">B.E in Electronics & Communication Engineering</p>
                             <div class="edu-details">
-                                <span><i class="icon">📅</i> 3rd Year | Expected 2028</span>
-                                <span><i class="icon">📊</i> CGPA: 7.0</span>
-                                <span><i class="icon">📍</i> Bengaluru, India</span>
+                                <span><i class="fas fa-calendar-check"></i> 3rd Year (Batch 2024 – 2028)</span>
+                                <span><i class="fas fa-award"></i> Current CGPA: <strong>7.0 / 10</strong></span>
+                                <span><i class="fas fa-map-marker-alt"></i> Bengaluru, Karnataka, India</span>
+                            </div>
+                            <div class="edu-coursework">
+                                <h5>Key Coursework</h5>
+                                <div class="coursework-tags">
+                                    <span>Analog & Digital Electronics</span>
+                                    <span>Signals & Systems</span>
+                                    <span>Microcontrollers</span>
+                                    <span>Network Theory</span>
+                                    <span>Programming Logic</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -298,25 +367,29 @@
                 <div class="contact-grid">
                     
                     <div class="contact-info animate-on-scroll slide-up">
-                        <p class="contact-desc">I'm currently looking for new opportunities, collaborations, and projects. My inbox is always open!</p>
+                        <p class="contact-desc">
+                            I'm always eager to collaborate on innovative projects, hackathons, and technical discussions. Whether you have a query or just want to connect, feel free to reach out!
+                        </p>
                         
                         <div class="contact-cards">
-                            <a href="mailto:thanuu02@gmail.com" class="contact-card glass-card">
-                                <span class="icon">📧</span>
+                            <div class="contact-card glass-card copyable-card" data-copy="thanuu02@gmail.com" title="Click to copy email address" role="button" tabindex="0" aria-label="Copy email thanuu02@gmail.com">
+                                <span class="icon"><i class="fas fa-envelope"></i></span>
                                 <div>
-                                    <h4>Email</h4>
+                                    <h4>Email <span class="action-tag">Click to Copy</span></h4>
                                     <p>thanuu02@gmail.com</p>
                                 </div>
-                            </a>
-                            <div class="contact-card glass-card">
-                                <span class="icon">📱</span>
+                                <span class="copy-icon"><i class="far fa-copy"></i></span>
+                            </div>
+                            <div class="contact-card glass-card copyable-card" data-copy="+919945825967" title="Click to copy phone number" role="button" tabindex="0" aria-label="Copy phone number +91 9945825967">
+                                <span class="icon"><i class="fas fa-phone-alt"></i></span>
                                 <div>
-                                    <h4>Phone</h4>
+                                    <h4>Phone <span class="action-tag">Click to Copy</span></h4>
                                     <p>+91 9945825967</p>
                                 </div>
+                                <span class="copy-icon"><i class="far fa-copy"></i></span>
                             </div>
                             <div class="contact-card glass-card">
-                                <span class="icon">📍</span>
+                                <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
                                 <div>
                                     <h4>Location</h4>
                                     <p>Bengaluru, India</p>
@@ -325,26 +398,36 @@
                         </div>
 
                         <div class="social-links">
-                            <a href="#" class="social-btn tooltip" data-tooltip="Coming Soon">GitHub</a>
-                            <a href="#" class="social-btn tooltip" data-tooltip="Coming Soon">LinkedIn</a>
+                            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-btn tooltip" data-tooltip="Visit GitHub" aria-label="Visit GitHub Profile"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-btn tooltip" data-tooltip="Visit LinkedIn" aria-label="Visit LinkedIn Profile"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+                            <a href="mailto:thanuu02@gmail.com" class="social-btn" aria-label="Send direct email"><i class="fas fa-envelope"></i> Email</a>
                         </div>
                     </div>
 
                     <div class="contact-form-container animate-on-scroll slide-up" style="transition-delay: 0.2s;">
-                        <form class="contact-form glass-card" onsubmit="event.preventDefault();">
+                        <form class="contact-form glass-card" id="contact-form" novalidate>
                             <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" id="name" name="name" placeholder="John Doe" required>
+                                <input type="text" id="name" name="name" placeholder=" " required autocomplete="name">
+                                <label for="name">Your Name</label>
+                                <span class="form-error-msg" id="name-error">Please enter your name</span>
                             </div>
                             <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                                <input type="email" id="email" name="email" placeholder=" " required autocomplete="email">
+                                <label for="email">Email Address</label>
+                                <span class="form-error-msg" id="email-error">Please enter a valid email address</span>
                             </div>
                             <div class="form-group">
-                                <label for="message">Message</label>
-                                <textarea id="message" name="message" rows="5" placeholder="Hello, I'd like to talk about..." required></textarea>
+                                <textarea id="message" name="message" rows="5" placeholder=" " maxlength="1000" required></textarea>
+                                <label for="message">Your Message</label>
+                                <div class="form-field-footer">
+                                    <span class="form-error-msg" id="message-error">Please enter your message (min. 5 characters)</span>
+                                    <span class="char-count" id="message-count">0 / 500</span>
+                                </div>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+                            <button type="submit" class="btn btn-primary btn-block" id="submit-btn">
+                                <span class="btn-text"><i class="fas fa-paper-plane"></i> Send Message</span>
+                                <span class="btn-loader" style="display:none;"><span class="spinner"></span> Sending...</span>
+                            </button>
                         </form>
                     </div>
 
@@ -353,25 +436,122 @@
         </section>
     </main>
 
+    <!-- Project Details Modal -->
+    <div class="modal-backdrop" id="project-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-project-title">
+        <div class="modal-container glass-card" tabindex="-1">
+            <button class="modal-close" id="modal-close-btn" aria-label="Close dialog">&times;</button>
+            <div class="modal-header">
+                <span class="modal-badge" id="modal-project-badge">Project Highlight</span>
+                <h3 class="modal-title" id="modal-project-title">Project Title</h3>
+                <p class="modal-subtitle" id="modal-project-subtitle">Project Subtitle</p>
+            </div>
+            <div class="modal-body" id="modal-project-body">
+                <!-- Injected dynamically -->
+            </div>
+            <div class="modal-footer" id="modal-project-footer">
+                <button class="btn btn-outline modal-action-btn" id="modal-action-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Resume Modal -->
+    <div class="modal-backdrop" id="resume-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="resume-modal-title">
+        <div class="modal-container glass-card resume-container" tabindex="-1">
+            <button class="modal-close" id="resume-close-btn" aria-label="Close resume dialog">&times;</button>
+            <div class="resume-header">
+                <div>
+                    <h2 id="resume-modal-title">M S Thanu Shree</h2>
+                    <p class="resume-tagline">ECE Student | Web Developer & Technology Enthusiast</p>
+                    <p class="resume-meta"><i class="fas fa-envelope"></i> thanuu02@gmail.com | <i class="fas fa-phone"></i> +91 9945825967 | <i class="fas fa-map-marker-alt"></i> Bengaluru, India</p>
+                </div>
+                <div class="resume-actions">
+                    <button class="btn btn-outline btn-sm" id="copy-resume-btn" aria-label="Copy resume details as plain text"><i class="far fa-copy"></i> Copy Text</button>
+                    <button class="btn btn-primary btn-sm" id="print-resume-btn" aria-label="Print or save resume as PDF"><i class="fas fa-print"></i> Print / Save PDF</button>
+                </div>
+            </div>
+            <div class="resume-content">
+                <div class="resume-section">
+                    <h3><i class="fas fa-user"></i> Professional Summary</h3>
+                    <p>Enthusiastic Electronics and Communication Engineering undergraduate at Dr Ambedkar Institute of Technology with a strong passion for web development, embedded systems, and applied artificial intelligence. Eager to create inclusive tech solutions and bridge hardware-software boundaries.</p>
+                </div>
+
+                <div class="resume-section">
+                    <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                    <div class="resume-item">
+                        <div class="resume-item-header">
+                            <h4>Dr Ambedkar Institute of Technology</h4>
+                            <span class="resume-item-date">2024 – 2028 (Expected)</span>
+                        </div>
+                        <p class="resume-item-sub">Bachelor of Engineering in Electronics & Communication</p>
+                        <p class="resume-item-details">Cumulative CGPA: <strong>7.0 / 10</strong> | Bengaluru, Karnataka</p>
+                    </div>
+                </div>
+
+                <div class="resume-section">
+                    <h3><i class="fas fa-laptop-code"></i> Key Projects</h3>
+                    <div class="resume-item">
+                        <div class="resume-item-header">
+                            <h4>SchemeWise — Voice-Driven Welfare Scheme Matcher</h4>
+                            <span class="resume-item-date">Sept 2026</span>
+                        </div>
+                        <p class="resume-item-sub">Selected for Ideathon 2026</p>
+                        <p>Developed responsive web interface for informal sector workers to discover government benefits. Designed JSON query structures and explored voice interaction pipelines.</p>
+                    </div>
+                    <div class="resume-item">
+                        <div class="resume-item-header">
+                            <h4>OilGuard — Engineering Mini-Project</h4>
+                            <span class="resume-item-date">2026</span>
+                        </div>
+                        <p class="resume-item-sub">Transformer Oil Condition Monitoring</p>
+                        <p>Researched sensor mechanisms to detect oil degradation parameters; formulated the comprehensive technical synopsis and project architecture.</p>
+                    </div>
+                </div>
+
+                <div class="resume-section">
+                    <h3><i class="fas fa-tools"></i> Technical Skills</h3>
+                    <div class="resume-skills-grid">
+                        <div><strong>Languages:</strong> JavaScript, Python</div>
+                        <div><strong>Web Tech:</strong> HTML5, CSS3, DOM, Responsive UI</div>
+                        <div><strong>Developer Tools:</strong> Git, GitHub, VS Code, Live Server</div>
+                        <div><strong>Domain Areas:</strong> VLSI Basics, Embedded Systems, GenAI Tools</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-logo">MT<span>.</span></div>
             <div class="footer-links">
                 <a href="#about">About</a>
+                <a href="#skills">Skills</a>
                 <a href="#projects">Projects</a>
+                <a href="#achievements">Achievements</a>
                 <a href="#contact">Contact</a>
             </div>
-            <a href="#hero" class="back-to-top">↑ Top</a>
+            <button class="back-to-top" id="back-to-top" aria-label="Back to top" title="Back to top">↑</button>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2026 M S Thanu Shree. All rights reserved.</p>
-            <p class="madewith">Built with ❤️ by M S Thanu Shree</p>
+            <p class="madewith">Designed & Built with <span class="heart">❤️</span> by M S Thanu Shree</p>
         </div>
     </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast" role="alert" aria-live="polite">
+        <div class="toast-content">
+            <span class="toast-icon" id="toast-icon">✅</span>
+            <div class="toast-text">
+                <h4 id="toast-title">Success!</h4>
+                <p id="toast-message">Your message has been sent successfully.</p>
+            </div>
+        </div>
+        <button class="toast-close" id="toast-close-btn" aria-label="Close notification">&times;</button>
+    </div>
 
     <!-- Main Script -->
     <script src="js/main.js"></script>
 </body>
 </html>
-
